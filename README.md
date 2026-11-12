@@ -57,7 +57,10 @@ NOTION_TOKENS_JSON={"claude":"secret_xxx","chatgpt":"secret_yyy","perplexity":"s
 
 ### 2. 依存関係のインストール
 
+ローカル開発では `.tool-versions` に指定した Node.js 22.23.5 を使います。
+
 ```bash
+node --version
 npm install
 ```
 
@@ -124,12 +127,16 @@ az login
 
 ### 2. Function Appを作成
 
+Azure Functions の Node.js ランタイムはメジャー版を指定します。
+この手順は、Linux Consumption でもサポートされる Node.js 22 を使います。
+[Azure Functions の対応ランタイム](https://learn.microsoft.com/en-us/azure/azure-functions/functions-versions?pivots=programming-language-javascript#languages)
+
 ```bash
 az functionapp create \
   --resource-group ai-functions \
   --consumption-plan-location japaneast \
   --runtime node \
-  --runtime-version 20 \
+  --runtime-version 22 \
   --functions-version 4 \
   --name ai-pipeline-func \
   --storage-account mystorage123
